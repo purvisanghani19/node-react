@@ -4,6 +4,8 @@ import PrivateRoute from "./PrivateRoute";
 import Navbar from '../Navbar/Navbar';
 import Product from "../Pages/Product";
 import Error from "../Pages/Error";
+import Login from "../Auth/Login";
+import AddProduct from "../Pages/AddProduct";
 
 
 const Routing = () => {
@@ -15,13 +17,14 @@ const Routing = () => {
 
         <Route element={<PrivateRoute/>}>
         <Route path="/" element={<Product/>} />
-        <Route path="/add" element={<Navbar />} />
+        <Route path="/add" element={<AddProduct />} />
         <Route path="/update" element={<Navbar />} />
         <Route path="/profile" element={<Navbar />} />
         </Route>
 
 
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/*" element={<Error />} />
       </Routes>
 
