@@ -17,7 +17,6 @@ app.post("/register", async (req, res) => {
     let result = await user.save();
     result = result.toObject();
     console.log('result obj', result);
-    
     delete result.password;
     res.send(result)
 })
@@ -36,12 +35,21 @@ app.post("/login", async (req, res) => {
     }
 })
 
-app.post('/add-product', async(req,res)=>{
+app.post('/add-product', async (req, res) => {
     let product = new Product(req.body)
     let result = await product.save();
     res.send(result)
 })
 
+app.get("/get-products", async (req, res) => {
+    let products = await Product.find();
+    if (products.length > 0) {
+        res.send(products)
+    } else {
+        res.send({ result: "no product found" })
+    }
+
+})
 
 
 
