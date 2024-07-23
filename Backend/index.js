@@ -11,7 +11,6 @@ app.use(express.json())
 app.use(cors());
 
 
-
 app.post("/register", async (req, res) => {
     let user = new User(req.body);
     let result = await user.save();
@@ -36,7 +35,7 @@ app.post("/login", async (req, res) => {
 })
 
 app.post('/add-product', async (req, res) => {
-    let product = new Product(req.body)
+    let product = new Product(req.body) 
     let result = await product.save();
     res.send(result)
 })
@@ -48,9 +47,12 @@ app.get("/get-products", async (req, res) => {
     } else {
         res.send({ result: "no product found" })
     }
-
 })
 
+app.delete("/delete-product/:id",async(req,res)=>{
+    const product = await Product.deleteOne({_id:req.params.id});
+    res.send(product)
+})
 
 
 

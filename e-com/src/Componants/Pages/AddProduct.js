@@ -14,8 +14,7 @@ const AddProduct = () => {
 
   const [error, setError] = useState(false)
   // console.log('Product', Product);
-
-
+  
   const handleProduct = (e) => {
     const { name, value } = e.target
     setProduct({ ...Product, [name]: value });
@@ -29,11 +28,17 @@ const AddProduct = () => {
       setError(true);
       return false;
     }
-
-
     try {
       let result = await axios.post("http://localhost:5000/add-product",Product);
       console.log('result', result);
+      alert("product is added");
+      setProduct({
+        name: "",
+        price: "",
+        catagory: "",
+        userId:userdata?._id,
+        company: ""
+      })
       
     } catch (error) {
       console.log(error);
