@@ -6,6 +6,7 @@ import Product from "../Pages/Product";
 import Error from "../Pages/Error";
 import Login from "../Auth/Login";
 import AddProduct from "../Pages/AddProduct";
+import UpdateProduct from "../Pages/UpdateProduct";
 
 
 const Routing = () => {
@@ -18,7 +19,7 @@ const Routing = () => {
         <Route element={<PrivateRoute/>}>
         <Route path="/" element={<Product/>} />
         <Route path="/add" element={<AddProduct />} />
-        <Route path="/update" element={<Navbar />} />
+        <Route path="/update/:id" element={<UpdateProduct />} />
         <Route path="/profile" element={<Navbar />} />
         </Route>
 

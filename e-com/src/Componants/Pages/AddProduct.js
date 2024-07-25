@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
   const auth = localStorage.getItem('userdata');
   const userdata = JSON.parse(auth)
+  const navigate = useNavigate();
   const [Product, setProduct] = useState({
     name: "",
     price: "",
@@ -39,7 +41,8 @@ const AddProduct = () => {
         userId:userdata?._id,
         company: ""
       })
-      
+      setError(false);
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
